@@ -6,7 +6,7 @@
 /*   By: rvan-gas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:04:30 by rvan-gas          #+#    #+#             */
-/*   Updated: 2024/09/11 17:26:44 by rvan-gas         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:01:26 by rvan-gas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_str_is_lowercase(char *str)
 
 	i = 0;
 	if (str[i] == '\0')
-		return(1);
+		return (1);
 	else
 	{
 		while (str[i] != '\0')
