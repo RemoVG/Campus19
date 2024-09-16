@@ -6,7 +6,7 @@
 /*   By: rvan-gas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:57:20 by rvan-gas          #+#    #+#             */
-/*   Updated: 2024/09/11 15:19:41 by rvan-gas         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:33:44 by rvan-gas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int	ft_str_is_alpha(char *str)
 		{
 			if (str[i] >= 'A' && str[i] <= 'Z')
 				i++;
-			else if (str[i] >= 'a' &&)
+			else if (str[i] >= 'a' && str[i] <= 'z')
+				i++;
+			else
+				return (0);
 		}
+		return (1);
 	}
 }
