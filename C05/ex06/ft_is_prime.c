@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvan-gas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 13:26:03 by rvan-gas          #+#    #+#             */
-/*   Updated: 2024/09/17 14:25:40 by rvan-gas         ###   ########.fr       */
+/*   Created: 2024/09/20 10:47:57 by rvan-gas          #+#    #+#             */
+/*   Updated: 2024/09/20 11:41:16 by rvan-gas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-
-void	ft_putchar(char c)
+int	ft_is_prime(int nb)
 {
-	write(1, &c, 1);
-}
+	int	i;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-	{	
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	if (nb < 0)
+	i = 1;
+	if (nb < 2)
+		return (0);
+	i++;
+	while (i <= nb / i)
 	{
-		ft_putchar('-');
-		nb = -nb;
+		if (nb % i == 0)
+			return (0);
+		i++;
 	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + '0');
+	return (1);
 }

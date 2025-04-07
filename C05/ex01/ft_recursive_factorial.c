@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvan-gas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 13:26:03 by rvan-gas          #+#    #+#             */
-/*   Updated: 2024/09/17 14:25:40 by rvan-gas         ###   ########.fr       */
+/*   Created: 2024/09/20 10:37:34 by rvan-gas          #+#    #+#             */
+/*   Updated: 2024/09/20 10:37:43 by rvan-gas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-
-void	ft_putchar(char c)
+int	ft_recursive_factorial_recur(int i, int nb)
 {
-	write(1, &c, 1);
+	i *= nb--;
+	if (nb > 0)
+		return (ft_recursive_factorial_recur(i, nb));
+	return (i);
 }
 
-void	ft_putnbr(int nb)
+int	ft_recursive_factorial(int nb)
 {
-	if (nb == -2147483648)
-	{	
-		write(1, "-2147483648", 11);
-		return ;
-	}
 	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + '0');
+		return (0);
+	if (nb == 0)
+		return (1);
+	return (ft_recursive_factorial_recur(1, nb));
 }
