@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:35:01 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/08 12:37:58 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:01:16 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
-	char *str;
+	size_t	i;
+	char	*str;
 
 	str = s;
 	i = 0;
