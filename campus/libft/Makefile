@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/24 13:57:45 by revan-ga          #+#    #+#              #
+#    Updated: 2025/04/24 15:12:05 by revan-ga         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME	= libft.a
+CC		= cc
+CFLAGS	= -Wall -Werror -Wextra
+
+SRC		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
+		ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
+		ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c \
+		ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c \
+		ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c strlcat.c
+
+#BONUS_SRC = nog in te vullen
+
+AR	= ar rcs
+RM	= rm -f
+
+OBJ	= $(SRC:.c=.o)
+#BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
+
+clean:
+	$(RM) $(OBJ) #$(BONUS_OBJ)
+
+fclean:
+	$(RM) $(NAME)
+
+re: fclean all
+
+#bonus:	$(BOUNS_OBJ) $(OBJ)
+#	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
+
+.PHONY: all clean fclean re

@@ -6,11 +6,11 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:03:04 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/08 13:03:13 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:10:27 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "libft.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {

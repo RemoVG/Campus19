@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:00:22 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/08 13:02:32 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:10:01 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	char	*str;
 
 	i = 0;
-	str = ;
+	str = s;
 	while (i < n)
 	{
 		str[i] = c;
