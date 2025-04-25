@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:10:04 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/08 13:10:27 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:52:11 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	slen = ft_strlen(s);
-	finish = 0;
-	if (start < slen)
-		finish = slen - start;
+	if (start >= slen)
+		return (ft_strdup(""));
+	finish = slen - start;
 	if (finish > len)
 		finish = len;
 	new = (char *)malloc(sizeof(char) * (finish + 1));

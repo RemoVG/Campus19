@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:08:20 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/08 15:08:35 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:43:41 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new;
-	t_list	*node;
+	t_list	*new_list;
+	t_list	*new_node;
+	void	*content;
 
-	if (!f || !lst)
+	if (!f || !lst || !del)
 		return (NULL);
-	new = NULL;
+	new_list = NULL;
 	while (lst)
 	{
-		node = ft_lstnew(f(lst->content));
-		if (!node)
+		content = f(lst->content);
+		if (!content)
 		{
-			ft_lstclear(&node, (*del));
+			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new, node);
+		new_node = ft_lstnew(content);
+		if (!new_node)
+		{
+			del(content);
+			ft_lstclear(&new_list, del);
+		}
+		ft_lstadd_back(&new_list, new_node);
 		lst = lst->next;
 	}
-	return (new);
+	return (new_list);
 }

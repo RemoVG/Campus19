@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 12:16:20 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/25 13:22:24 by revan-ga         ###   ########.fr       */
+/*   Created: 2025/04/25 14:27:41 by revan-ga          #+#    #+#             */
+/*   Updated: 2025/04/25 14:38:21 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
+	size_t	space_left;
+
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	space_left = dstsize - dst_len - 1;
+	i = 0;
+	while (i < space_left && src[i])
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }

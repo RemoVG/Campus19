@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:55:59 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/04/24 14:59:21 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:37:34 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	size_t			j;
 	unsigned char	*d;
 	unsigned char	*s;
 
-	i = 0;
-	j = 0;
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
 	if (!dest && !src)
 		return (NULL);
-	if (dest > src)
+	if (d < s)
 	{
-		j = -1;
-		d += n -1;
-		s += n - 1;
+		while (n--)
+			*d++ = *s++;
 	}
-	while (i < n)
+	else
 	{
-		*d = *s;
-		d += j;
-		s += j;
-		i++;
+		d += n;
+		s += n;
+		while (n--)
+			*--d = *--s;
 	}
 	return (dest);
 }
