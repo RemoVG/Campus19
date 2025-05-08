@@ -1,0 +1,89 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefiletemplate                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: REVAN-GA <revan-ga@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/05/08 18:55:00 by REVAN-GA          #+#    #+#              #
+#    Updated: 2025/05/08 18:56:58 by REVAN-GA         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# ------------- HOOFDINSTELLINGEN -------------
+
+# Output bestandsnaam (verander dit naar jouw programma naam)
+NAME		=	mijn_programma
+
+# Compiler en flags
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+
+# ------------- DIRECTORIES -------------
+
+# Directory structuur
+SRC_DIR		=	src
+INC_DIR		=	include
+OBJ_DIR		=	obj
+LIB_DIR		=	lib
+
+# ------------- BESTANDEN -------------
+
+# Bronbestanden (voeg hier je .c bestanden toe)
+SRC_FILES	=	main \
+				bestand1 \
+				bestand2
+
+# Maak paden voor bronbestanden
+SRCS		=	$(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
+
+# Header bestanden
+HEADERS		=	$(INC_DIR)/mijn_header.h
+
+# Object bestanden
+OBJS		=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# ------------- COMMANDO'S -------------
+
+# Verwijder commando
+RM			=	rm -rf
+
+# ------------- REGELS -------------
+
+# Standaard regel
+all:			$(NAME)
+
+# Hoofdbestand bouwen
+$(NAME):		$(OBJ_DIR) $(OBJS)
+				$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+				@echo "\033[32mProgramma $(NAME) gebouwd!\033[0m"
+
+# Object directory aanmaken
+$(OBJ_DIR):
+				mkdir -p $(OBJ_DIR)
+
+# Compilatie regel voor object bestanden
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS)
+				$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+# Opruimen object bestanden
+clean:
+				$(RM) $(OBJ_DIR)
+				@echo "\033[33mObject bestanden verwijderd\033[0m"
+
+# Alles opruimen
+fclean:			clean
+				$(RM) $(NAME)
+				@echo "\033[33mAlles verwijderd\033[0m"
+
+# Alles opnieuw bouwen
+re:				fclean all
+
+# Regels die geen bestandsnamen zijn (voorkomt verwarring als er bestanden zijn met deze namen)
+.PHONY:			all clean fclean re
+
+# ------------- GEBRUIK -------------
+# make        - bouwt het programma
+# make clean  - verwijdert object bestanden
+# make fclean - verwijdert alles
+# make re     - bouwt alles opnieuw
