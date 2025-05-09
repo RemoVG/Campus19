@@ -3,31 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: REVAN-GA <revan-ga@student.42.fr>          +#+  +:+       +#+         #
+#    By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/08 18:29:09 by REVAN-GA          #+#    #+#              #
-#    Updated: 2025/05/08 18:54:14 by REVAN-GA         ###   ########.fr        #
+#    Created: 2025/05/06 14:02:20 by revan-ga          #+#    #+#              #
+#    Updated: 2025/05/09 12:40:47 by revan-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
+NAME	=	libftprintf.a
 
-CC		= gcc
-CFLAGS		= -Wall -Werror -Wextra
-AR		= ar
-RM		= rm -rf
+CC		=	cc
+CFLAGS	=	-Wall -Werror -Wextra
+AR		=	ar rcs
+RM		=	rm -rf
 
-SRC		= ft_printf ft_putchar ft_putstr ft_hexadecimal_uppercase ft_hexadecimal_lowercase ft_putadress ft_putunbr ft_putnbr
-SRCS		=
+SRC		=	ft_printf ft_putvoid ft_putchar ft_putnbr ft_putstr \
+ft_putunbr ft_puthex 
 
-OBJ_DIR		= obj
-OBJS		=
+SRCS	=	$(addsuffix .c, $(SRC))
 
-LIBFT_PATH	=
-LIBFT		=
+OBJS	= 	$(SRCS:.c=.o)
 
-$(OBJ_DIR)/.o:	%.c
+all: 		$(NAME)
 
-all:		$(NAME)
+%.o: %.c
+		$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$()
+$(NAME): $(OBJS)
+		$(AR) $(NAME) $(OBJS) 
+
+clean:
+		$(RM) $(OBJS)
+
+fclean:	clean
+		$(RM) $(NAME)
+
+re:		fclean all
+
+.PHONY:	all clean fclean re
