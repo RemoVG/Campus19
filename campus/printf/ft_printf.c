@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:48:20 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/05/09 12:43:50 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:07:57 by REVAN-GA         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_spec(va_list ap, char c)
 	else if (c == 'p')
 		count += ft_putvoid(va_arg(ap, void *));
 	else if (c == 'u')
-		count = ft_putunbr(va_arg(ap, unsigned int));
+		count += ft_putunbr(va_arg(ap, unsigned int));
 	else if (c == '%')
 		return (ft_putchar('%'));
 	else
@@ -46,18 +46,19 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		i;
 	int		count;
+	int		spec_result;
 
 	i = 0;
 	count = 0;
 	va_start(ap, format);
 	if (!format)
-		return ('\0');
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] != '\0')
-				break ;
+			if (format[i + 1] == '\0')
+				return (-1);
 			count += ft_spec(ap, format[i + 1]);
 			i++;
 		}

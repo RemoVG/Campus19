@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:32:08 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/05/09 12:42:40 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:59:08 by REVAN-GA         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_putvoid(void *ptr)
 	i = 0;
 	if (!ptr)
 	{
-		i += ft_putstr("(NULL)");
+		i += ft_putstr("(nil)");
 		return (i);
 	}
 	i += write(1, "0x", 2);
