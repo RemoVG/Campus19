@@ -6,48 +6,64 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:12:29 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/05/09 14:33:18 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:49:31 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlen(const char *str)
+#include "get_next_line.h"
+
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	size_t i;
+	char	*joined;
+	char	*start;
+	int		i;
 
 	i = 0;
-	if (!str)
-		return (0);
+	if (!s1)
+	{
+		s1 = malloc(1);
+		if (!s1)
+			return (free(s1), NULL);
+		s1[0] = '\0';
+	}
+	if (!s2)
+		return (NULL);
+	joined = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	start = joined;
+	if (!joined)
+		return (NULL);
+	while (s1[i])
+		*joined++ = s1[i++];
+	i = 0;
+	while (s2[i])
+		*joined++ = s2[i++];
+	*joined = '\0';
+	return (free(s1), start);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
 	while (str[i])
+	{
 		i++;
+	}
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
+	if (!s)
 		return (NULL);
-	while (str[i])
+	while (*s)
 	{
-		if (str[i] == (char)c)
+		if (*s == (char)c)
 			return ((char *)s);
-		i++;
+		s++;
 	}
-	if (s[i] == char c)
+	if ('\0' == (char)c)
 		return ((char *)s);
 	return (NULL);
-}
-
-char	*ft_strdup(const char *str)
-{
-}
-
-char	*ft_substr(char *str, unsigned int start, size_t len)
-{
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-}
+}	
