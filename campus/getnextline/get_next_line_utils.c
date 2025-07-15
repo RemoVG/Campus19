@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:12:29 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/07/15 13:49:31 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:45:48 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,4 @@ char	*ft_strchr(const char *s, int c)
 	if ('\0' == (char)c)
 		return ((char *)s);
 	return (NULL);
-}	
+}

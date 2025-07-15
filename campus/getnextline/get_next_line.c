@@ -6,7 +6,7 @@
 /*   By: revan-ga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:38:08 by revan-ga          #+#    #+#             */
-/*   Updated: 2025/07/15 13:45:25 by revan-ga         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:48:25 by revan-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*extract_line(char *buffer)
 	j = -1;
 	while (i > ++j)
 		line[j] = buffer[j];
-	line[j] '\0';
+	line[j] = '\0';
 	return (line);
 }
 
@@ -73,7 +73,7 @@ static char	*read_and_store(int fd, char *buffer)
 	bytes = 1;
 	while (!ft_strchr(buffer, '\n') && bytes > 0)
 	{
-		bytes = read(fd, read_buffr, BUFFER_SIZE);
+		bytes = read(fd, read_buffer, BUFFER_SIZE);
 		if (bytes < 0)
 		{
 			free(read_buffer);
